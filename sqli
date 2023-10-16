@@ -1,0 +1,25 @@
+<?php
+try
+{
+$d = new PDO('mysql:host=localhost;dbname=-;charset=utf8', '-', '-');
+}
+catch(Exception $e)
+{
+die('Erreur : '.$e->getMessage());
+}
+
+$reponse = $d->query('SELECT username FROM users WHERE id=\'' . $_GET['id'] . '\'');
+
+echo '<p>sql challenge  </p>';
+while ($donnees = $reponse->fetch())
+{
+?>    
+<center><h3>Salut a tous, c'est  <?php echo $donnees['username']; ?> aujourd'hui je présente un (challenge) plus pour s'entraîner, l'objectif est simple : récuperer le mot de passe de l'admin !</h3><center>
+<?php
+}
+$reponse->closeCursor();
+// Amine 
+?>
+<center><h4>____________________________________________________________________________</h4></center>
+. . .
+ 
